@@ -28,20 +28,38 @@
             <string>/// Usage and setup
 
 /*// Copy-paste this code:
-
+if (instance_exists(obj_transition)) {
+    obj_transition.fade = true;
+    if (obj_transition.fade_end == true) {
+        // Do stuff //
+        
+        obj_transition.fade_end = false;
+        
+        // Optional //
+        obj_transition.fade_out = true;
+        obj_transition.activate_player = true;
+    }
+}
 */
 
-// Set: Fade in (1) or fade out (0)
-fade_dir = -1;
+// Start fade
+fade = false;
 
-// Get: returns true if the fading is done
+// Start fadeout (when fade is done)
+fade_out = false;
+
+// Returns true if the fading is done
 fade_end = false;
 
+// Activate player (can_move = true) after fadeout
+activate_player = false;
+
 // Fade speed
-spd = 0.04;
+spd = 0.08;
 
 // Internal
-alpha = -1;
+alpha = 0;
+player_can_move = false;
 </string>
           </argument>
         </arguments>
@@ -70,36 +88,26 @@ if (fade_end == true) {
     exit;
 }
 
-if (fade_dir == 0) {
-    // Fade to dark
-    if (alpha == -1) {
-        alpha = 0;
-    } else {
-        alpha += spd;
-    }
-    
-    if (alpha &gt;= 1) {
-        fade_end = true;
-        alpha = 1;
+if (fade_out == false) {
+    if (fade == true) {
+        if (alpha &lt; 1) {
+            alpha += spd;
+        } else {
+            alpha = 1;
+            fade_end = true;
+        }
     }
 } else {
-    if (fade_dir == 1) {
-        // Fade to light
-        if (alpha == -1) {
-            alpha = 1;
-        } else {
-            alpha -= spd;
-        }
-        
-        if (alpha &lt;= 0) {
-            fade_end = true;
-            alpha = 0;
-        }
+    if (alpha &gt; 0) {
+        alpha -= spd;
     } else {
-        // Go to 0
-        if (alpha != 0) {
-            alpha -= sign(alpha) * min(abs(alpha), spd);
+        alpha = 0;
+        if (activate_player == true &amp;&amp; instance_exists(obj_player)) {
+            obj_player.can_move = true;
+            activate_player = false;
         }
+        fade = false;
+        fade_out = false;
     }
 }
 </string>

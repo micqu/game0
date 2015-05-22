@@ -60,7 +60,7 @@ yy = 0;
 other.can_move = false;
 
 if (instance_exists(obj_transition)) {
-    obj_transition.fade_dir = 0;
+    obj_transition.fade = true;
     if (obj_transition.fade_end == true) {
         // Change player position
         if (xx != -1 &amp;&amp; yy != -1) {
@@ -72,9 +72,9 @@ if (instance_exists(obj_transition)) {
             }
         }
         room_goto(goto_room);
-        other.can_move = true;
-        obj_transition.fade_dir = -1;
         obj_transition.fade_end = false;
+        obj_transition.fade_out = true;
+        obj_transition.activate_player = true;
     }
 }
 </string>

@@ -26,7 +26,9 @@
           <argument>
             <kind>1</kind>
             <string>// Create stuff
-instance_create(x, y, obj_transition);
+if (!instance_exists(obj_transition)) {
+    instance_create(x, y, obj_transition);
+}
 instance_create(x, y, obj_background);
 instance_create(x, y, obj_light);
 </string>
@@ -60,6 +62,11 @@ draw_text(view_xview + 16, view_yview + 16, string(fps));
 
 // Number of instances
 draw_text(view_xview + 16, view_yview + 32, string(instance_count));
+
+// Can_move
+if (instance_exists(obj_player)) {
+    draw_text(view_xview + 16, view_yview + 48, "can_move: " + string(obj_player.can_move));
+}
 
 // Draw grid
 /*
