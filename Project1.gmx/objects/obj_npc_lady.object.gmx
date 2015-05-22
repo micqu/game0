@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>image_speed = 0;
+image_index = 3;
 depth = -y;
 </string>
           </argument>
@@ -56,14 +57,6 @@ if (!instance_exists(obj_speech)) {
         speech[0, 1] = 1;
         speech[1, 0] = "2. Vestibulum vel nisl luctus, cursus elit ut, venenatis eros.";
         speech[1, 1] = 2;
-        speech[2, 0] = "3. Mauris rhoncus viverra dolor, eu viverra elit faucibus ac.";
-        speech[2, 1] = 1;
-        speech[3, 0] = "4. Duis ac ex vitae risus mollis accumsan sit amet quis nulla.";
-        speech[3, 1] = 1;
-        speech[4, 0] = "5. Vestibulum quis placerat nisi.";
-        speech[4, 1] = 2;
-        speech[5, 0] = "7. Etiam ut lectus sed ipsum cursus pulvinar in eu risus!";
-        speech[5, 1] = 1;
         
         message_current = 0;
         message_end = array_height_2d(speech) - 1;

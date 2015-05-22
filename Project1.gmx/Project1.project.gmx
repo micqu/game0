@@ -29,6 +29,7 @@
   </scripts>
   <objects name="objects">
     <object>objects\obj_c</object>
+    <object>objects\obj_transition</object>
     <object>objects\obj_background</object>
     <object>objects\obj_light</object>
     <object>objects\obj_player</object>

@@ -176,6 +176,8 @@ var pad = 64;
 instance_deactivate_all(true);
 instance_activate_region(view_xview - pad, view_yview - pad, view_wview + pad * 2, view_hview + pad * 2, true);
 instance_activate_object(obj_c);
+instance_activate_object(obj_transition);
+instance_activate_object(obj_background);
 instance_activate_object(obj_light);
 </string>
           </argument>
@@ -201,69 +203,66 @@ instance_activate_object(obj_light);
             <kind>1</kind>
             <string>/// Movement and animation
 
-if (can_move == false) {
-    exit;
-}
-
-// Get direction
-dir_x = (keyboard_check(k_right) - keyboard_check(k_left));
-dir_y = (keyboard_check(k_down) - keyboard_check(k_up));
-
-if (keyboard_check_pressed(k_right)) {
-    dir = 0;
-    move = true;
-}
-
-if (keyboard_check_pressed(k_up)) {
-    dir = 90;
-    move = true;
-}
-
-if (keyboard_check_pressed(k_left)) {
-    dir = 180;
-    move = true;
-}
-
-if (keyboard_check_pressed(k_down)) {
-    dir = 270;
-    move = true;
-}
-
-// Flawless movement
-if (dir_x == 0 &amp;&amp; dir_y != 0) {
-    dir = dir_y * 90 + 180;
-    move = true;
-}
-
-if (dir_x != 0 &amp;&amp; dir_y == 0) {
-    dir = -(dir_x * 90 - 90);
-    move = true;
-}
-
-// No input -&gt; stop
-if (dir_x == 0 &amp;&amp; dir_y == 0) {
-    move = false;
-    moving = false;
-}
-
-// Move px and py
-if (move = true) {
-    if (moving == false) {
-        alarm[0] = 0.15 * room_speed;
-        moving = true;
+if (can_move == true) {
+    // Get direction
+    dir_x = (keyboard_check(k_right) - keyboard_check(k_left));
+    dir_y = (keyboard_check(k_down) - keyboard_check(k_up));
+    
+    if (keyboard_check_pressed(k_right)) {
+        dir = 0;
+        move = true;
     }
     
-    if (alarm[0] &lt; 0 &amp;&amp; x == px &amp;&amp; y == py) {
-        if (!place_meeting(x + dir_x * 32, y, par_solid)) {
-            px += lengthdir_x(1, dir) * 32;
+    if (keyboard_check_pressed(k_up)) {
+        dir = 90;
+        move = true;
+    }
+    
+    if (keyboard_check_pressed(k_left)) {
+        dir = 180;
+        move = true;
+    }
+    
+    if (keyboard_check_pressed(k_down)) {
+        dir = 270;
+        move = true;
+    }
+    
+    // Flawless movement
+    if (dir_x == 0 &amp;&amp; dir_y != 0) {
+        dir = dir_y * 90 + 180;
+        move = true;
+    }
+    
+    if (dir_x != 0 &amp;&amp; dir_y == 0) {
+        dir = -(dir_x * 90 - 90);
+        move = true;
+    }
+    
+    // No input -&gt; stop
+    if (dir_x == 0 &amp;&amp; dir_y == 0) {
+        move = false;
+        moving = false;
+    }
+    
+    // Move px and py
+    if (move = true) {
+        if (moving == false) {
+            alarm[0] = 0.15 * room_speed;
+            moving = true;
         }
         
-        if (!place_meeting(x, y + dir_y * 32, par_solid)) {
-            py += lengthdir_y(1, dir) * 32;
+        if (alarm[0] &lt; 0 &amp;&amp; x == px &amp;&amp; y == py) {
+            if (!place_meeting(x + dir_x * 32, y, par_solid)) {
+                px += lengthdir_x(1, dir) * 32;
+            }
+            
+            if (!place_meeting(x, y + dir_y * 32, par_solid)) {
+                py += lengthdir_y(1, dir) * 32;
+            }
         }
     }
 }
-
 // Move player
 motion_set(point_direction(x, y, px, py), min(spd, point_distance(x, y, px, py)));
 
@@ -370,10 +369,11 @@ repeat ceil(abs(vspd)) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_self();
+            <string>/// Debug info
+
+draw_self();
 
 /*
-// Debug info
 draw_set_alpha(1);
 draw_set_color(c_red);
 draw_circle(px, py, 5, false)
@@ -409,24 +409,28 @@ if (can_move == false) {
     exit;
 }
 
-var a;
-a = instance_place(x + lengthdir_x(1, dir), y + lengthdir_y(1, dir), par_solid);
-
+var a = instance_place(x + lengthdir_x(1, dir), y + lengthdir_y(1, dir), par_solid);
 if (a &gt; 0) {
     switch (a.object_index) {
         case obj_npc_lady: {
-            can_move = false
+            can_move = false;
             with (a) {
+                // Turn her around
+                image_index = (other.dir / 90) + 2;
                 event_user(0);
             }
         } break;
+        
         case obj_save: {
-            can_move = false
+            can_move = false;
             with (a) {
                 event_user(0);
             }
         }
-        default : {} break;
+        
+        default : {
+            // Do nothing
+        } break;
     }
 }
 </string>

@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>// Create stuff
+instance_create(x, y, obj_transition);
 instance_create(x, y, obj_background);
 instance_create(x, y, obj_light);
 </string>
