@@ -12,8 +12,8 @@
   <TextureGroups>
     <TextureGroup0>0</TextureGroup0>
   </TextureGroups>
-  <For3D>0</For3D>
-  <width>96</width>
-  <height>96</height>
+  <For3D>-1</For3D>
+  <width>128</width>
+  <height>128</height>
   <data>images\bg_floortile.png</data>
 </background>

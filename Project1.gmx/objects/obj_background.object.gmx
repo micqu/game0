@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-999999</depth>
+  <depth>999999</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,9 +25,17 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Create stuff
-instance_create(x, y, obj_background);
-instance_create(x, y, obj_light);
+            <string>/// Set background
+switch (room) {
+    /*// Template
+    case rm_0: {
+        bg = bg_xxx;
+    } break;
+    */
+    default: {
+        bg = bg_floortile;
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -50,53 +58,10 @@ instance_create(x, y, obj_light);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_color(c_black);
-
-// Draw fps
-draw_set_alpha(1);
-draw_set_color(c_white)
-draw_text(view_xview + 16, view_yview + 16, string(fps));
-
-// Number of instances
-draw_text(view_xview + 16, view_yview + 32, string(instance_count));
-
-// Draw grid
-/*
-var a;
-a = 32;
-
-draw_set_alpha(0.1);
-for (i = 0; i &lt; room_width div a; i ++) {
-    draw_line(i * a, 0, i * a, room_height);
+            <string>/// Draw background
+if (bg != -1) {
+    scr_draw_bg(0, 0, room_width, room_height, bg);
 }
-
-for (i = 0; i &lt; room_height div a; i ++) {
-    draw_line(0, i * a, room_width, i * a);
-}
-draw_set_alpha(1);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="27">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>game_end();
 </string>
           </argument>
         </arguments>
@@ -106,11 +71,11 @@ draw_set_alpha(1);
   <PhysicsObject>0</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>
   <PhysicsObjectShape>0</PhysicsObjectShape>
-  <PhysicsObjectDensity>0</PhysicsObjectDensity>
-  <PhysicsObjectRestitution>0</PhysicsObjectRestitution>
+  <PhysicsObjectDensity>0.5</PhysicsObjectDensity>
+  <PhysicsObjectRestitution>0.100000001490116</PhysicsObjectRestitution>
   <PhysicsObjectGroup>0</PhysicsObjectGroup>
-  <PhysicsObjectLinearDamping>0</PhysicsObjectLinearDamping>
-  <PhysicsObjectAngularDamping>0</PhysicsObjectAngularDamping>
+  <PhysicsObjectLinearDamping>0.100000001490116</PhysicsObjectLinearDamping>
+  <PhysicsObjectAngularDamping>0.100000001490116</PhysicsObjectAngularDamping>
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>

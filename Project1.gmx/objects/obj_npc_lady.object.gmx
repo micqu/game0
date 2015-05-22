@@ -49,7 +49,8 @@ depth = -y;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (!instance_exists(obj_speech)) {
+            <string>/// Dialogue text
+if (!instance_exists(obj_speech)) {
     with (instance_create(x, y, obj_speech)) {
         speech[0, 0] = "1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
         speech[0, 1] = 1;

@@ -7,15 +7,14 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\spr_player</sprite>
+    <sprite>sprites\spr_save</sprite>
+    <sprite>sprites\spr_tp_pad</sprite>
     <sprite>sprites\spr_wall_top</sprite>
     <sprite>sprites\spr_wall</sprite>
     <sprite>sprites\spr_door</sprite>
     <sprites name="NPCs">
       <sprite>sprites\spr_npc_face</sprite>
       <sprite>sprites\spr_npc_lady</sprite>
-    </sprites>
-    <sprites name="Teleport pads">
-      <sprite>sprites\spr_tp_rm1</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -26,26 +25,28 @@
     <script>scripts\scr_view_init.gml</script>
     <script>scripts\scr_view_step.gml</script>
     <script>scripts\scr_inside_box.gml</script>
+    <script>scripts\scr_draw_bg.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_c</object>
+    <object>objects\obj_background</object>
     <object>objects\obj_light</object>
     <object>objects\obj_player</object>
     <object>objects\obj_speech</object>
+    <object>objects\obj_save</object>
     <object>objects\par_solid</object>
     <object>objects\obj_wall_top</object>
     <object>objects\obj_wall</object>
     <object>objects\obj_door</object>
+    <object>objects\obj_tp</object>
     <objects name="NPCs">
       <object>objects\obj_npc_lady</object>
-    </objects>
-    <objects name="Teleport pads">
-      <object>objects\obj_tp_rm1</object>
     </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_0</room>
     <room>rooms\rm_1</room>
+    <room>rooms\rm_2</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

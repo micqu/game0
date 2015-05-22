@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>0</persistent>
+  <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -404,17 +404,28 @@ draw_text(x, y + 32, string(image_index));
           <argument>
             <kind>1</kind>
             <string>/// Interact
+
+if (can_move == false) {
+    exit;
+}
+
 var a;
 a = instance_place(x + lengthdir_x(1, dir), y + lengthdir_y(1, dir), par_solid);
 
 if (a &gt; 0) {
     switch (a.object_index) {
         case obj_npc_lady: {
-            can_move = false;
+            can_move = false
             with (a) {
                 event_user(0);
             }
         } break;
+        case obj_save: {
+            can_move = false
+            with (a) {
+                event_user(0);
+            }
+        }
         default : {} break;
     }
 }

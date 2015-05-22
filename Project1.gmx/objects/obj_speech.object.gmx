@@ -126,7 +126,9 @@ if (chr_num &lt; message_length) {
 }
 
 draw_set_alpha(1);
-draw_sprite(spr_npc_face, speech[message_current, 1], view_wview, view_hview * (1 - min_height));
+if (speech[message_current, 1] != -1) {
+    draw_sprite(spr_npc_face, speech[message_current, 1], view_wview, view_hview * (1 - min_height));
+}
 draw_line_width(0, view_hview * (1 - min_height), view_wview, view_hview * (1 - min_height), 2);
 
 draw_set_color(c_white);
