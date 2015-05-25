@@ -179,6 +179,7 @@ instance_activate_object(obj_c);
 instance_activate_object(obj_transition);
 instance_activate_object(obj_background);
 instance_activate_object(obj_light);
+instance_activate_object(obj_radio);
 </string>
           </argument>
         </arguments>

@@ -4,7 +4,10 @@
     <Config>Configs\Default</Config>
   </Configs>
   <NewExtensions/>
-  <sounds name="sound"/>
+  <sounds name="sound">
+    <sound>sound\sd_try</sound>
+    <sound>sound\sd_door</sound>
+  </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_player</sprite>
     <sprite>sprites\spr_save</sprite>
@@ -47,12 +50,15 @@
       <object>objects\obj_npc_lady</object>
     </objects>
     <object>objects\obj_o_toilet</object>
+    <objects name="Sound">
+      <object>objects\obj_radio</object>
+    </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_bathroom</room>
     <room>rooms\rm_0</room>
     <room>rooms\rm_1</room>
     <room>rooms\rm_2</room>
+    <room>rooms\rm_bathroom</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
