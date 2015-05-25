@@ -59,6 +59,10 @@ yy = 0;
 
 other.can_move = false;
 
+//
+audio_play_sound(sd_door,1,false);
+
+
 if (instance_exists(obj_transition)) {
     obj_transition.fade = true;
     if (obj_transition.fade_end == true) {
