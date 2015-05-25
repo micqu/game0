@@ -16,6 +16,7 @@
       <sprite>sprites\spr_npc_face</sprite>
       <sprite>sprites\spr_npc_lady</sprite>
     </sprites>
+    <sprite>sprites\spr_o_toilet</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_floortile</background>
@@ -28,12 +29,14 @@
     <script>scripts\scr_draw_bg.gml</script>
   </scripts>
   <objects name="objects">
-    <object>objects\obj_c</object>
-    <object>objects\obj_transition</object>
-    <object>objects\obj_background</object>
-    <object>objects\obj_light</object>
+    <objects name="Meta-objects">
+      <object>objects\obj_c</object>
+      <object>objects\obj_transition</object>
+      <object>objects\obj_background</object>
+      <object>objects\obj_light</object>
+      <object>objects\obj_speech</object>
+    </objects>
     <object>objects\obj_player</object>
-    <object>objects\obj_speech</object>
     <object>objects\obj_save</object>
     <object>objects\par_solid</object>
     <object>objects\obj_wall_top</object>
@@ -43,8 +46,10 @@
     <objects name="NPCs">
       <object>objects\obj_npc_lady</object>
     </objects>
+    <object>objects\obj_o_toilet</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_bathroom</room>
     <room>rooms\rm_0</room>
     <room>rooms\rm_1</room>
     <room>rooms\rm_2</room>

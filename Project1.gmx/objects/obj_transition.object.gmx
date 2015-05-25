@@ -133,6 +133,10 @@ if (fade_out == false) {
           <argument>
             <kind>1</kind>
             <string>/// Draw screen overlay
+if (alpha == 0) {
+    exit;
+}
+
 draw_set_color(c_black);
 draw_set_alpha(alpha);
 draw_rectangle(0, 0, view_wview, view_hview, false);

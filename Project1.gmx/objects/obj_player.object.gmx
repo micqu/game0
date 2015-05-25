@@ -404,7 +404,6 @@ draw_text(x, y + 32, string(image_index));
           <argument>
             <kind>1</kind>
             <string>/// Interact
-
 if (can_move == false) {
     exit;
 }
