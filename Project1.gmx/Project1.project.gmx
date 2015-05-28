@@ -20,6 +20,10 @@
       <sprite>sprites\spr_npc_lady</sprite>
     </sprites>
     <sprite>sprites\spr_o_toilet</sprite>
+    <sprites name="inventory">
+      <sprite>sprites\spr_border</sprite>
+      <sprite>sprites\spr_items</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_floortile</background>
@@ -30,6 +34,11 @@
     <script>scripts\scr_view_step.gml</script>
     <script>scripts\scr_inside_box.gml</script>
     <script>scripts\scr_draw_bg.gml</script>
+    <script>scripts\scr_item_pickup.gml</script>
+    <script>scripts\scr_item_drop.gml</script>
+    <script>scripts\scr_item_check.gml</script>
+    <script>scripts\scr_item_pickup_slot.gml</script>
+    <script>scripts\scr_item_drop_slot.gml</script>
   </scripts>
   <objects name="objects">
     <objects name="Meta-objects">
@@ -52,6 +61,11 @@
     <object>objects\obj_o_toilet</object>
     <objects name="Sound">
       <object>objects\obj_radio</object>
+    </objects>
+    <object>objects\obj_inventory</object>
+    <objects name="inventory">
+      <object>objects\obj_invbutton</object>
+      <object>objects\obj_mouseitem</object>
     </objects>
   </objects>
   <rooms name="rooms">

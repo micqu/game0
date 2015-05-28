@@ -355,6 +355,7 @@
     <instance objName="obj_tp" x="480" y="544" name="inst_36983B5C" locked="0" code="goto_room = rm_1;&#xA;xx = 448;&#xA;yy = 448;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_tp" x="192" y="544" name="inst_998E27AF" locked="0" code="goto_room = rm_2;&#xA;xx = 128;&#xA;yy = 448;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_radio" x="768" y="352" name="inst_703886BC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_inventory" x="672" y="256" name="inst_A178CFB5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
