@@ -66,18 +66,17 @@
     <objects name="Sound">
       <object>objects\obj_radio</object>
     </objects>
-    <object>objects\obj_inventory</object>
     <objects name="inventory">
+      <object>objects\obj_inventory</object>
       <object>objects\obj_invbutton</object>
-      <object>objects\obj_mouseitem</object>
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_menu</room>
     <room>rooms\rm_0</room>
+    <room>rooms\rm_bathroom</room>
     <room>rooms\rm_1</room>
     <room>rooms\rm_2</room>
-    <room>rooms\rm_bathroom</room>
+    <room>rooms\rm_menu</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

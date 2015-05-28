@@ -8,6 +8,29 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>slot = -1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
@@ -25,30 +48,36 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var item = global.inventory[slot];
-var click = mouse_check_button_pressed(mb_left);
-
-if (abs(mouse_x - x ) &lt; 16 ) &amp;&amp; (abs(mouse_y - y ) &lt; 16 )
-{
-     draw_set_color(c_white);
-     draw_rectangle(x-16,y-16,x+16,y+16,0);
-     if(click)
-     {
-        if(item != -1)
-        {
-            scr_item_drop_slot(slot);
-        }
-        if (mouseItem != -1)
-        {
-            scr_item_pickup_slot(mouseItem,slot)
-        }
-        mouseItem = item;
-     }
+            <string>if (showInv == false) {
+    exit;
 }
 
-if (item != -1)
-{
-    draw_sprite(spr_items,item,x,y);
+// Define "item" as what item is inside this button (slot).
+var item = global.inventory[slot];
+
+// If mouse hovers over a button
+if (abs(mouse_x - x ) &lt; 16 ) &amp;&amp; (abs(mouse_y - y ) &lt; 16 ) {
+    draw_set_color(c_white);
+    draw_rectangle(x - 16, y - 16, x + 16, y + 16, false);
+    
+    if (mouse_check_button_pressed(mb_left)) {
+        // Remove item from slot if slot isn't empty
+        if (item != -1) {
+            scr_item_drop_slot(slot);
+        }
+        
+        // Insert item in slot if mouse is holding an item
+        if (mouseItem != -1) {
+            scr_item_pickup_slot(mouseItem, slot)
+        }
+        
+        mouseItem = item;
+    }
+}
+
+// Draw item in current button (slot)
+if (item != -1) {
+    draw_sprite(spr_items, item, x, y);
 }
 </string>
           </argument>

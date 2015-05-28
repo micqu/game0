@@ -31,6 +31,7 @@ image1 = Scary Potion
 image2 = Amulet of Death
 image3 = Skull
 */
+
 //variables
 globalvar showInv; 
 showInv = true;
@@ -38,17 +39,15 @@ showInv = true;
 globalvar maxItems;
 maxItems = 10;
 
-for (i = 0; i &lt; maxItems; i += 1)
-{
-  global.inventory[i] = -1;
-  button[i] = instance_create(0,0,obj_invbutton);
-  button[i].slot = i;
-  
+// Create all item slots and assign their id's
+for (i = 0; i &lt; maxItems; i += 1) {
+    global.inventory[i] = -1;
+    button[i] = instance_create(0, 0, obj_invbutton);
+    button[i].slot = i;
 }
 
 globalvar mouseItem;
 mouseItem = -1;
-instance_create(0,0,obj_mouseitem);
 
 /*
 amuletCheck = scr_item_check(2);
@@ -79,25 +78,38 @@ if (amuletcheck == 1)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (showInv)
-{
-    var x1,x2,y1,y2;
-    x1 = view_xview[0]+64;
-    x2 = x1 + view_wview[0];
+            <string>if (showInv) {
+    var x1, x2, y1, y2;
+    /*
+    x1 = view_xview + 64;
+    x2 = x1 + view_wview - 128;
+    y1 = view_yview + view_hview - 64;
+    y2 = y1 + 64;
+    */
+    x1 = view_xview + 64;
+    x2 = x1 + view_wview;
     y1 = view_yview + view_hview;
-    y2 = y1 -64;
+    y2 = y1 - 64;
     
     draw_set_color(c_black);
     draw_set_alpha(0.8);
-    draw_rectangle(x1,y1,x2,y2,0);
+    draw_rectangle(x1, y1, x2, y2, false);
     draw_set_alpha(1);
     
-    for (i = 0 ; i &lt; maxItems; i +=1)
-    {
-        draw_sprite(spr_border,0,x1+24+(i*40),y2+24)
-        button[i].x = x1 + 24 + (i*40);
+    // Update all buttons positions
+    for (i = 0 ; i &lt; maxItems; i +=1) {
+        button[i].x = x1 + 24 + (i * 40);
         button[i].y = y2 + 24;
-        
+        draw_sprite(spr_border, 0, button[i].x, button[i].y);
+    }
+    
+    // Draw mouse item
+    if (mouseItem != -1) {
+        draw_sprite(spr_items, mouseItem, mouse_x, mouse_y);
+    } else {
+        if (mouse_check_button_released(mb_left)) {
+            mouseItem = -1;
+        }
     }
 }
 </string>
@@ -122,13 +134,11 @@ if (amuletcheck == 1)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var addpotion;
-addpotion = scr_item_pickup(random(3));
-if (addpotion == 0)
-{
+            <string>var additem = scr_item_pickup(random(3));
+
+if (additem == 0) {
     //inventory is full
 }
-
 </string>
           </argument>
         </arguments>

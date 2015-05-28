@@ -1,4 +1,4 @@
-//scr_item_pickup_slot(item,slot);
+//scr_item_pickup_slot(item, slot);
 
 if (global.inventory[argument1] == -1 ) 
 {
