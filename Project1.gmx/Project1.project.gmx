@@ -40,9 +40,13 @@
     <script>scripts\scr_item_pickup_slot.gml</script>
     <script>scripts\scr_item_drop_slot.gml</script>
   </scripts>
+  <fonts name="fonts">
+    <font>fonts\fnt_menu</font>
+  </fonts>
   <objects name="objects">
     <objects name="Meta-objects">
       <object>objects\obj_c</object>
+      <object>objects\obj_menu</object>
       <object>objects\obj_transition</object>
       <object>objects\obj_background</object>
       <object>objects\obj_light</object>
@@ -69,6 +73,7 @@
     </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_menu</room>
     <room>rooms\rm_0</room>
     <room>rooms\rm_1</room>
     <room>rooms\rm_2</room>
